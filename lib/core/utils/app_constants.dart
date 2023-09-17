@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'app_colors.dart';
 
 class AppConstants {
+  static late final String token;
   static const String path = 'assets/images';
   static final double defaultPadding = 12.h;
   static final padding15h = 15.h;

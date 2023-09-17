@@ -5,8 +5,7 @@ import 'package:tasks_app/core/utils/app_colors.dart';
 abstract class AppStyles {
   static final textStyle14 = TextStyle(
     fontSize: 12.sp,
-    fontWeight: FontWeight.bold,
-    color: AppColors.white,
+
   );
 
   static final textStyle16 = TextStyle(

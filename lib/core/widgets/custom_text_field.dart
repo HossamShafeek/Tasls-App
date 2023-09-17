@@ -16,27 +16,34 @@ class CustomTextField extends StatelessWidget {
     this.textInputType,
     this.obscureText = false,
     this.prefixIcon,
+    this.paddingForTop,
+    this.paddingForBottom,
   }) : super(key: key);
   final TextEditingController controller;
   final String? Function(String?)? validator;
-  final Widget title;
+  final String title;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final String hintText;
   final int? maxLength;
   final TextInputType? textInputType;
   final bool obscureText;
+  final double? paddingForTop;
+  final double? paddingForBottom;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        title,
+        Text(
+          title,
+          style: AppStyles.textStyle16,
+        ),
         Padding(
           padding: EdgeInsets.only(
-            top: AppConstants.defaultPadding,
-            bottom: 15.h,
+            top: paddingForTop??AppConstants.defaultPadding,
+            bottom: paddingForBottom?? AppConstants.padding15h,
           ),
           child: TextFormField(
             controller: controller,

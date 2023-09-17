@@ -9,8 +9,8 @@ class ApiServicesImplementation implements ApiServices {
     BaseOptions baseOptions = BaseOptions(
       baseUrl: EndPoints.baseUrl,
       receiveDataWhenStatusError: true,
-      connectTimeout: 10 * 1000, //10 second
-      receiveTimeout: 10 * 1000,
+      connectTimeout: const Duration(seconds: 10),
+      receiveTimeout: const Duration(seconds: 10),
     );
     _dio = Dio(baseOptions);
   }
@@ -29,11 +29,12 @@ class ApiServicesImplementation implements ApiServices {
   Future<Response> post(
       {required String endPoint,
       Map<String, dynamic>? queryParameters,
+      String? token,
       required Map<String, dynamic> data}) async {
-    // _dio!.options.headers = {
-    //   'Authorization': token??'',
-    //   'Content-Type': 'application/json',
-    // };
+    _dio!.options.headers = {
+      'Authorization': 'Bearer $token' ?? '',
+      'Accept': 'application/json',
+    };
     return await _dio!.post(
       endPoint,
       queryParameters: queryParameters,

@@ -1,14 +1,16 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tasks_app/core/api/api_services.dart';
-import 'package:tasks_app/core/api/end_points.dart';
+import 'package:tasks_app/core/errors/failures.dart';
+import 'package:tasks_app/core/utils/app_constants.dart';
 import 'package:tasks_app/features/Auth/data/models/login_model/login_model.dart';
+import 'package:tasks_app/features/Auth/data/repository/login_repository.dart';
 import 'package:tasks_app/features/Auth/presentation/cubit/login_cubit/login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit(this.apiServices) : super(LoginInitialState());
+  LoginCubit(this.loginRepository) : super(LoginInitialState());
 
- final ApiServices apiServices;
+  final LoginRepository loginRepository;
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -30,24 +32,20 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   LoginModel? loginModel;
-  void userLogin({
+  Future<void> userLogin({
     required String email,
     required String password,
-  }) {
+  }) async {
     emit(LoginLoadingState());
-    apiServices.post(endPoint: EndPoints.login, data: {
-      'email': email,
-      'password': password,
-    }).then((value) {
-      loginModel = LoginModel.fromJson(value.data);
-      emit(LoginSuccessState(loginModel!));
-      print(loginModel!.data!.email);
-      print(loginModel!.data!.token);
-    }).catchError((error){
-      emit(LoginFailureState(error.toString()));
-      print(error.toString());
+    Either<Failure, LoginModel> result;
+    result = await loginRepository.userLogin(email: email, password: password);
+    result.fold((failure) {
+      emit(LoginFailureState(failure.error));
+    }, (loginModel) {
+      this.loginModel = loginModel;
+      AppConstants.token = loginModel.data!.token!;
+      print(loginModel.data!.email);
+      emit(LoginSuccessState(loginModel));
     });
   }
-
-
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasks_app/core/api/api_services_implementation.dart';
+import 'package:tasks_app/features/Auth/data/repository/login_repository_implementation.dart';
 import 'package:tasks_app/features/Auth/presentation/cubit/login_cubit/login_cubit.dart';
 import 'package:tasks_app/features/Auth/presentation/views/widgets/login_view_body.dart';
 
@@ -10,7 +11,8 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginCubit(ApiServicesImplementation()),
+      create: (context) => LoginCubit(
+          LoginRepositoryImplementation(ApiServicesImplementation())),
       child: const Scaffold(
         resizeToAvoidBottomInset: false,
         body: LoginViewBody(),
