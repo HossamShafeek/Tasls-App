@@ -4,6 +4,7 @@ import 'package:tasks_app/core/utils/app_colors.dart';
 import 'package:tasks_app/core/utils/app_constants.dart';
 import 'package:tasks_app/features/Auth/presentation/views/login_view.dart';
 import 'package:tasks_app/features/department/presentation/views/create_department_view.dart';
+import 'package:tasks_app/features/department/presentation/views/departments_view.dart';
 import 'package:tasks_app/features/user/presentation/views/cretae_user_view.dart';
 
 class HomeView extends StatelessWidget {
@@ -23,6 +24,16 @@ class HomeView extends StatelessWidget {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
                       return const CreateDepartmentView();
+                    },
+                  ));
+                },
+              ),
+              ListTile(
+                title: const Text('Departments'),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return const  DepartmentsView();
                     },
                   ));
                 },

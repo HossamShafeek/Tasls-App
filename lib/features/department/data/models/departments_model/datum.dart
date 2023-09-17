@@ -11,7 +11,14 @@ class Datum {
         id: json['id'] as int?,
         name: json['name'] as String?,
         manager: json['manager'] == null
-            ? null
+            ? Manager(
+                name: 'Not Found',
+                userType: 'No',
+                phone: 000,
+                email: 'No',
+                id: 0,
+                userCode: '0',
+                status: 'No')
             : Manager.fromJson(json['manager'] as Map<String, dynamic>),
       );
 
