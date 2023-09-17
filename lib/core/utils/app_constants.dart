@@ -10,6 +10,7 @@ class AppConstants {
   static final double defaultPadding = 12.h;
   static final padding15h = 15.h;
   static final double padding10h = 10.h;
+  static final double padding10w = 10.w;
   static final double padding8h = 8.h;
   static final double padding5h = 5.h;
   static final double padding3h = 3.h;

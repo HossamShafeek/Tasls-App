@@ -37,7 +37,6 @@ class DepartmentRepositoryImplementation extends DepartmentRepository {
         token: AppConstants.token,
         endPoint: EndPoints.getAllDepartments,
       );
-      print(data.length);
       return Right(DepartmentsModel.fromJson(data));
 
     } catch (error) {

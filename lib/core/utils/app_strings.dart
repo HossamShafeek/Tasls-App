@@ -2,6 +2,7 @@ class AppStrings {
   static const String noRouteFound = 'No Route Found';
   static const String login = 'LOGIN';
   static const String create = 'Create';
+  static const String update = 'Update';
   static const String titleForLogin = 'Welcome Back!';
   static const String subtitleForLogin =
       'Login to access your assigned tasks and personal overview.';

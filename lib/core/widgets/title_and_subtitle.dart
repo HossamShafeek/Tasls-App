@@ -17,7 +17,7 @@ class TitleAndSubtitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppStyles.textStyle34,
+          style: AppStyles.textStyle30,
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: AppConstants.defaultPadding),

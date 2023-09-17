@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasks_app/core/errors/failures.dart';
 import 'package:tasks_app/features/department/data/models/create_department_model/department_model.dart';
@@ -12,12 +13,18 @@ class DepartmentCubit extends Cubit<DepartmentState> {
 
   static DepartmentCubit get(context) => BlocProvider.of(context);
 
+  final TextEditingController nameControllerForCreate = TextEditingController();
+  final TextEditingController nameControllerForUpdate = TextEditingController();
+
+  var formKeyForCreate = GlobalKey<FormState>();
+  var formKeyForUpdate = GlobalKey<FormState>();
+
   CreateDepartmentModel? departmentModel;
 
-  Future<void> createDepartment({required String name}) async {
+  Future<void> createDepartment() async {
     emit(CreateDepartmentLoadingState());
     Either<Failure, CreateDepartmentModel> result;
-    result = await departmentRepository.createDepartment(name: name);
+    result = await departmentRepository.createDepartment(name: nameControllerForCreate.text);
     result.fold((failure) {
       emit(CreateDepartmentFailureState(failure.error));
     }, (departmentModel) {

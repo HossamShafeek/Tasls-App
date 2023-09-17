@@ -33,7 +33,6 @@ abstract class AppStyles {
   static final textStyle30 = TextStyle(
     fontSize: 28.sp,
     fontWeight: FontWeight.bold,
-    color: AppColors.white,
   );
   static final textStyle40 = TextStyle(
     fontSize: 38.sp,
