@@ -20,7 +20,7 @@ class CreateDepartmentView extends StatelessWidget {
 }
 
 class DepartmentViewBody extends StatelessWidget {
-   DepartmentViewBody({Key? key}) : super(key: key);
+  DepartmentViewBody({Key? key}) : super(key: key);
 
   final TextEditingController nameController = TextEditingController();
 

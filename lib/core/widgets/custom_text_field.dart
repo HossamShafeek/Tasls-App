@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasks_app/core/utils/app_colors.dart';
 import 'package:tasks_app/core/utils/app_constants.dart';
 import 'package:tasks_app/core/utils/app_styles.dart';
@@ -42,8 +41,8 @@ class CustomTextField extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(
-            top: paddingForTop??AppConstants.defaultPadding,
-            bottom: paddingForBottom?? AppConstants.padding15h,
+            top: paddingForTop ?? AppConstants.defaultPadding,
+            bottom: paddingForBottom ?? AppConstants.padding15h,
           ),
           child: TextFormField(
             controller: controller,

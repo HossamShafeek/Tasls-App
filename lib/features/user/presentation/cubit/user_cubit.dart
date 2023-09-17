@@ -31,7 +31,7 @@ class UserCubit extends Cubit<UserState> {
       phone: phoneController.text,
       password: passwordController.text,
       userType: groupValue,
-     // departmentId: 81
+      // departmentId: 81
     );
     result.fold((failure) {
       emit(UserFailureState(failure.error));
@@ -47,9 +47,8 @@ class UserCubit extends Cubit<UserState> {
 
   int groupValue = 0;
 
-  void changeGroupValue({required int newValue}){
+  void changeGroupValue({required int newValue}) {
     groupValue = newValue;
     emit(ChangeGroupValue());
   }
-
 }

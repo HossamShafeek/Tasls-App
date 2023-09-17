@@ -18,4 +18,4 @@ class UserFailureState extends UserState {
   UserFailureState(this.error);
 }
 
-class ChangeGroupValue extends UserState{}
+class ChangeGroupValue extends UserState {}

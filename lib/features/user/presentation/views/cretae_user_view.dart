@@ -13,5 +13,3 @@ class CreateUserView extends StatelessWidget {
     );
   }
 }
-
-

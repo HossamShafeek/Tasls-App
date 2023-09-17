@@ -8,7 +8,6 @@ import 'package:tasks_app/features/user/data/models/user_model/user_model.dart';
 import 'package:tasks_app/features/user/data/repository/user_repository.dart';
 
 class UserRepositoryImplementation extends UserRepository {
-
   final ApiServices apiServices;
 
   UserRepositoryImplementation(this.apiServices);
@@ -21,8 +20,8 @@ class UserRepositoryImplementation extends UserRepository {
     required String password,
     required int userType,
     int? departmentId,
-  }) async{
-    try{
+  }) async {
+    try {
       Response data = await apiServices.post(
           token: CacheHelper.getString(key: 'token').toString(),
           endPoint: EndPoints.createUser,
@@ -31,12 +30,12 @@ class UserRepositoryImplementation extends UserRepository {
             'email': email,
             'phone': phone,
             'password': password,
-            'user_type':userType,
+            'user_type': userType,
           });
       // كان عندى خطأ هنا
       return Right(UserModel.fromJson(data.data));
     } catch (error) {
       return Left(ServerFailure(error.toString()));
     }
-    }
   }
+}
