@@ -12,10 +12,11 @@ class UpdateDepartmentViewBody extends StatelessWidget {
   const UpdateDepartmentViewBody({
     Key? key,
     required this.departmentId,
-    required this.managerId,
+    required this.managerId, required this.departmentName,
   }) : super(key: key);
 
   final int departmentId;
+  final String departmentName;
   final int managerId;
 
   @override
@@ -47,8 +48,9 @@ class UpdateDepartmentViewBody extends StatelessWidget {
               GradientButton(
                 onPressed: () {
                   DepartmentCubit.get(context).updateDepartment(
+                    name: departmentName,
                     departmentId: departmentId,
-                    managerId: managerId,
+                    managerId: managerId.toString(),
                   );
                 },
                 title: AppStrings.update,

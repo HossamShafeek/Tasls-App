@@ -66,14 +66,14 @@ class UserRepositoryImplementation extends UserRepository {
     try {
       Response data = await apiServices.post(
           token: CacheHelper.getString(key: 'token').toString(),
-          endPoint: EndPoints.updateUsers,
+          endPoint: EndPoints.updateUsers+userId.toString(),
           data: {
             'name': name,
             'email': email,
             'phone': phone,
             'password': password,
             'user_type': userType,
-            'user_status': 0,
+            'user_status': 0.toString(),
           });
       return Right(CreateUserModel.fromJson(data.data));
     } catch (error) {

@@ -46,26 +46,41 @@ class DepartmentRepositoryImplementation extends DepartmentRepository {
   @override
   Future<Either<Failure, CreateDepartmentModel>> updateDepartment({
     required int departmentId,
-    required int managerId,
+    required String managerId,
+    required name,
   }) async{
     try {
       Response data = await apiServices.post(
           token: CacheHelper.getString(key: 'token').toString(),
-          endPoint: EndPoints.updateDepartments,
+          endPoint: EndPoints.updateDepartments+departmentId.toString(),
           data: {
             'manager_id': managerId,
-            //'department_id': departmentId,
+            'name': name,
           });
-      print(data);
       return Right(CreateDepartmentModel.fromJson(data.data));
     } catch (error) {
       if (error is DioError) {
-        print(error.response!.data['message']['user_status']);
-        print('============================================');
         return Left(ServerFailure(error.response!.data['message']['user_status'].toString()));
       } else {
         return Left(ServerFailure(error.toString()));
       }
     }
   }
+
+
+  Future<CreateDepartmentModel> updateDepartment2 ({required int departmentId,
+    required String name,
+    required int managerId,
+  })async{
+      Response data = await apiServices.post(
+          token: CacheHelper.getString(key: 'token').toString(),
+          endPoint: EndPoints.updateDepartments+departmentId.toString(),
+          data: {
+            'manager_id': managerId.toString(),
+            'name': name,
+          });
+      print(data);
+      return CreateDepartmentModel.fromJson(data.data);
+  }
+
 }

@@ -6,5 +6,5 @@ class EndPoints {
   static const String updateDepartments = 'department/update/';
   static const String createUser = 'user/store';
   static const String getAllUsers = 'user/index';
-  static const String updateUsers = 'user/update/5';
+  static const String updateUsers = 'user/update/';
 }

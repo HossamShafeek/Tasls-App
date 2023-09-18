@@ -52,20 +52,41 @@ class DepartmentCubit extends Cubit<DepartmentState> {
 
   Future<void> updateDepartment({
     required int departmentId,
-    required int managerId,
+    required String managerId,
+    required name,
   }) async {
     emit(UpdateDepartmentsLoadingState());
     Either<Failure, CreateDepartmentModel> result;
     result = await departmentRepository.updateDepartment(
+      name: name,
         departmentId: departmentId, managerId: managerId);
     result.fold((failure) {
       emit(UpdateDepartmentsFailureState(failure.error));
+      print(failure.error.toString());
     }, (updateDepartmentModel) {
       this.updateDepartmentModel = updateDepartmentModel;
       print('================================');
       print(updateDepartmentModel.message);
       print('================================');
       emit(UpdateDepartmentsSuccessState(updateDepartmentModel));
+    });
+  }
+
+  void updateDepartment2({
+  required int departmentId,
+  required int managerId,
+  required name,
+}) {
+    emit(UpdateDepartmentsLoadingState());
+    departmentRepository.updateDepartment2(
+      departmentId: departmentId,
+      name: name,
+      managerId: managerId,
+    ).then((value) {
+      emit(UpdateDepartmentsSuccessState(value));
+    }).catchError((error){
+      emit(UpdateDepartmentsFailureState(error.toString()));
+      print(error.toString());
     });
   }
 }

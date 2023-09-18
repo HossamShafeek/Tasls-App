@@ -33,6 +33,7 @@ class _UpdateDepartmentViewState extends State<UpdateDepartmentView> {
       body: UpdateDepartmentViewBody(
         departmentId: widget.departmentId,
         managerId: widget.managerId,
+        departmentName: widget.departmentName,
       ),
     );
   }
