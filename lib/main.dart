@@ -8,7 +8,9 @@ import 'package:tasks_app/features/Auth/presentation/views/login_view.dart';
 import 'package:tasks_app/features/department/data/repository/department_repository_implementation.dart';
 import 'package:tasks_app/features/department/presentation/cubit/department_cubit.dart';
 import 'package:tasks_app/features/user/data/repository/user_repository_implementation.dart';
-import 'package:tasks_app/features/user/presentation/cubit/user_cubit.dart';
+import 'package:tasks_app/features/user/presentation/cubits/create_user_cubit/cretae_user_cubit.dart';
+import 'package:tasks_app/features/user/presentation/cubits/get_all_users_cubit/gett_all_user_cubit.dart';
+import 'package:tasks_app/features/user/presentation/cubits/update_user_cubit/update_user_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +37,12 @@ class TasksApp extends StatelessWidget {
             ),
             BlocProvider(
               create: (context) => UserCubit(
+                  UserRepositoryImplementation(ApiServicesImplementation())),
+            ),BlocProvider(
+              create: (context) => GetAllUsersCubit(
+                  UserRepositoryImplementation(ApiServicesImplementation())),
+            ),BlocProvider(
+              create: (context) => UpdateUserCubit(
                   UserRepositoryImplementation(ApiServicesImplementation())),
             )
           ],

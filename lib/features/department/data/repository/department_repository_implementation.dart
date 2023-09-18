@@ -33,14 +33,39 @@ class DepartmentRepositoryImplementation extends DepartmentRepository {
   @override
   Future<Either<Failure, DepartmentsModel>> getAllDepartments() async {
     try {
-      Map<String,dynamic> data = await apiServices.get(
+      Map<String, dynamic> data = await apiServices.get(
         token: AppConstants.token,
         endPoint: EndPoints.getAllDepartments,
       );
       return Right(DepartmentsModel.fromJson(data));
-
     } catch (error) {
       return Left(ServerFailure(error.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, CreateDepartmentModel>> updateDepartment({
+    required int departmentId,
+    required int managerId,
+  }) async{
+    try {
+      Response data = await apiServices.post(
+          token: CacheHelper.getString(key: 'token').toString(),
+          endPoint: EndPoints.updateDepartments,
+          data: {
+            'manager_id': managerId,
+            //'department_id': departmentId,
+          });
+      print(data);
+      return Right(CreateDepartmentModel.fromJson(data.data));
+    } catch (error) {
+      if (error is DioError) {
+        print(error.response!.data['message']['user_status']);
+        print('============================================');
+        return Left(ServerFailure(error.response!.data['message']['user_status'].toString()));
+      } else {
+        return Left(ServerFailure(error.toString()));
+      }
     }
   }
 }

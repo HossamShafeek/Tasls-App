@@ -32,3 +32,20 @@ class GetAllDepartmentsFailureState extends DepartmentState {
 
   GetAllDepartmentsFailureState(this.error);
 }
+
+
+
+
+class UpdateDepartmentsLoadingState extends DepartmentState {}
+
+class UpdateDepartmentsSuccessState extends DepartmentState {
+  final CreateDepartmentModel updateDepartmentModel;
+
+  UpdateDepartmentsSuccessState(this.updateDepartmentModel);
+}
+
+class UpdateDepartmentsFailureState extends DepartmentState {
+  final String error;
+
+  UpdateDepartmentsFailureState(this.error);
+}

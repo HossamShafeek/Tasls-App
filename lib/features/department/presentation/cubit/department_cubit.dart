@@ -24,7 +24,8 @@ class DepartmentCubit extends Cubit<DepartmentState> {
   Future<void> createDepartment() async {
     emit(CreateDepartmentLoadingState());
     Either<Failure, CreateDepartmentModel> result;
-    result = await departmentRepository.createDepartment(name: nameControllerForCreate.text);
+    result = await departmentRepository.createDepartment(
+        name: nameControllerForCreate.text);
     result.fold((failure) {
       emit(CreateDepartmentFailureState(failure.error));
     }, (departmentModel) {
@@ -35,7 +36,7 @@ class DepartmentCubit extends Cubit<DepartmentState> {
 
   DepartmentsModel? departmentsModel;
 
-  Future<void> getAllDepartment()async{
+  Future<void> getAllDepartment() async {
     emit(GetAllDepartmentsLoadingState());
     Either<Failure, DepartmentsModel> result;
     result = await departmentRepository.getAllDepartments();
@@ -47,4 +48,24 @@ class DepartmentCubit extends Cubit<DepartmentState> {
     });
   }
 
+  CreateDepartmentModel? updateDepartmentModel;
+
+  Future<void> updateDepartment({
+    required int departmentId,
+    required int managerId,
+  }) async {
+    emit(UpdateDepartmentsLoadingState());
+    Either<Failure, CreateDepartmentModel> result;
+    result = await departmentRepository.updateDepartment(
+        departmentId: departmentId, managerId: managerId);
+    result.fold((failure) {
+      emit(UpdateDepartmentsFailureState(failure.error));
+    }, (updateDepartmentModel) {
+      this.updateDepartmentModel = updateDepartmentModel;
+      print('================================');
+      print(updateDepartmentModel.message);
+      print('================================');
+      emit(UpdateDepartmentsSuccessState(updateDepartmentModel));
+    });
+  }
 }

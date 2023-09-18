@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:tasks_app/core/utils/app_colors.dart';
 import 'package:tasks_app/core/utils/app_constants.dart';
@@ -12,13 +11,14 @@ class TabBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding:  EdgeInsets.only(left: AppConstants.defaultPadding,
-         right: AppConstants.defaultPadding,
+        padding: EdgeInsets.only(
+          left: AppConstants.defaultPadding,
+          right: AppConstants.defaultPadding,
           top: AppConstants.defaultPadding,
         ),
         child: Column(
           children: const [
-             SizedBox(
+            SizedBox(
               width: double.infinity,
               height: 30,
               child: TabBar(
@@ -28,8 +28,7 @@ class TabBarWidget extends StatelessWidget {
                   tabs: [
                     Text('Users'),
                     Text('Tasks'),
-                  ]
-              ),
+                  ]),
             ),
             Expanded(
               child: TabBarView(

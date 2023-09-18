@@ -16,7 +16,8 @@ class DepartmentsViewBody extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             itemCount: state.departmentModel.data!.length,
             itemBuilder: (context, index) {
-              return DepartmentListViewItem(departmentsModel: state.departmentModel, index: index);
+              return DepartmentListViewItem(
+                  departmentsModel: state.departmentModel, index: index);
             },
             separatorBuilder: (context, index) {
               return const Divider();

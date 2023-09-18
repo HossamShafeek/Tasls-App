@@ -9,8 +9,6 @@ import 'package:tasks_app/features/department/presentation/cubit/department_cubi
 class CreateDepartmentViewBody extends StatelessWidget {
   const CreateDepartmentViewBody({Key? key}) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,9 +34,11 @@ class CreateDepartmentViewBody extends StatelessWidget {
             ),
             GradientButton(
               onPressed: () {
-                if (DepartmentCubit.get(context).formKeyForCreate.currentState!.validate()) {
-                  DepartmentCubit.get(context)
-                      .createDepartment();
+                if (DepartmentCubit.get(context)
+                    .formKeyForCreate
+                    .currentState!
+                    .validate()) {
+                  DepartmentCubit.get(context).createDepartment();
                 }
               },
               title: AppStrings.create,

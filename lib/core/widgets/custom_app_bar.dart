@@ -17,7 +17,8 @@ class CustomAppBar extends StatelessWidget {
           icon: Icon(
             IconBroken.Filter,
             size: AppConstants.iconSize24,
-          ),),
+          ),
+        ),
         SizedBox(
           width: AppConstants.padding5h,
         ),
@@ -26,7 +27,7 @@ class CustomAppBar extends StatelessWidget {
             Text(
               'Today',
               style:
-              AppStyles.textStyle18.copyWith(fontWeight: FontWeight.bold),
+                  AppStyles.textStyle18.copyWith(fontWeight: FontWeight.bold),
             ),
             Text(
               '18/9/2023',
@@ -35,10 +36,10 @@ class CustomAppBar extends StatelessWidget {
           ],
         ),
         const Spacer(),
-         Padding(
-           padding:  EdgeInsets.only(right: AppConstants.defaultPadding),
-           child: rightWidget,
-         ),
+        Padding(
+          padding: EdgeInsets.only(right: AppConstants.defaultPadding),
+          child: rightWidget,
+        ),
       ],
     );
   }

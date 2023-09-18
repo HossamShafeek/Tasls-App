@@ -8,4 +8,9 @@ abstract class DepartmentRepository {
       {required String name});
 
   Future<Either<Failure, DepartmentsModel>> getAllDepartments();
+
+  Future<Either<Failure, CreateDepartmentModel>> updateDepartment({
+    required int departmentId,
+    required int managerId,
+  });
 }

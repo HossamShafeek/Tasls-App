@@ -6,11 +6,11 @@ import 'package:tasks_app/core/utils/app_styles.dart';
 class CircularProgressGroupItem extends StatelessWidget {
   const CircularProgressGroupItem(
       {Key? key,
-        required this.percent,
-        this.radius,
-        required this.center,
-        required this.progressColor,
-        required this.backgroundColor})
+      required this.percent,
+      this.radius,
+      required this.center,
+      required this.progressColor,
+      required this.backgroundColor})
       : super(key: key);
 
   final double percent;

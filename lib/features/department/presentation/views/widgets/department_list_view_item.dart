@@ -21,7 +21,9 @@ class DepartmentListViewItem extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => UpdateDepartmentView(
+                departmentName:departmentsModel.data![index].name!,
                 departmentId: departmentsModel.data![index].id!,
+                managerId: departmentsModel.data![index].manager!.id!,
               ),
             ),
           );

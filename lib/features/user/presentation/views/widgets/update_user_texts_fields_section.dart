@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasks_app/core/widgets/custom_text_field.dart';
-import 'package:tasks_app/features/user/presentation/cubits/create_user_cubit/cretae_user_cubit.dart';
-import 'package:tasks_app/features/user/presentation/cubits/create_user_cubit/create_user_state.dart';
+import 'package:tasks_app/features/user/presentation/cubits/get_all_users_cubit/get_all_user_state.dart';
+import 'package:tasks_app/features/user/presentation/cubits/update_user_cubit/update_user_cubit.dart';
 
-class UserTextsFieldsSection extends StatelessWidget {
-  const UserTextsFieldsSection({Key? key}) : super(key: key);
+class UpdateUserTextsFieldsSection extends StatelessWidget {
+  const UpdateUserTextsFieldsSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserCubit, UserState>(
+    return BlocBuilder<UpdateUserCubit, UpdateUserState>(
       builder: (context, state) {
         return Form(
-          key: UserCubit.get(context).formKey,
+          key: UpdateUserCubit.get(context).formKey,
           child: Column(
             children: [
               CustomTextField(
                 textInputType: TextInputType.name,
-                controller: UserCubit.get(context).nameController,
+                controller: UpdateUserCubit.get(context).nameController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your name';
@@ -29,7 +29,7 @@ class UserTextsFieldsSection extends StatelessWidget {
               ),
               CustomTextField(
                 textInputType: TextInputType.emailAddress,
-                controller: UserCubit.get(context).emailController,
+                controller: UpdateUserCubit.get(context).emailController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your email';
@@ -41,7 +41,7 @@ class UserTextsFieldsSection extends StatelessWidget {
               ),
               CustomTextField(
                 textInputType: TextInputType.visiblePassword,
-                controller: UserCubit.get(context).passwordController,
+                controller: UpdateUserCubit.get(context).passwordController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your password';
@@ -55,7 +55,7 @@ class UserTextsFieldsSection extends StatelessWidget {
               ),
               CustomTextField(
                 textInputType: TextInputType.phone,
-                controller: UserCubit.get(context).phoneController,
+                controller: UpdateUserCubit.get(context).phoneController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your phone';

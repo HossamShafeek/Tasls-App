@@ -1,14 +1,15 @@
 import 'data.dart';
 
-class UserModel {
+class CreateUserModel {
   String? message;
   Data? data;
   bool? status;
   int? code;
 
-  UserModel({this.message, this.data, this.status, this.code});
+  CreateUserModel({this.message, this.data, this.status, this.code});
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+  factory CreateUserModel.fromJson(Map<String, dynamic> json) =>
+      CreateUserModel(
         message: json['message'] as String?,
         data: json['data'] == null
             ? null

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 abstract class ApiServices {
-  Future<Map<String,dynamic>> get({
+  Future<Map<String, dynamic>> get({
     required String endPoint,
     Map<String, dynamic> queryParameters,
     String? token,

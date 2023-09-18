@@ -9,6 +9,9 @@ class AppStrings {
   static const String titleForCreateUser = 'Add New User!';
   static const String subtitleForCreateUser =
       'Create a new user now and assign them tasks right away.';
+  static const String titleForUpdateUser = 'Update User Details!';
+  static const String subtitleForUpdateUser =
+      'Update user details and give them a new identity.';
   static const String titleForCreateDepartment = 'New Department!';
   static const String subtitleForCreateDepartment =
       'Create a new department now and assign a manager to start the work!';

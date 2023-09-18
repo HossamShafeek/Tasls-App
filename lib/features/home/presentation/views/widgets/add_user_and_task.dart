@@ -16,7 +16,7 @@ class AddUserAndTask extends StatelessWidget {
         decoration: BoxDecoration(
             color: AppColors.deepPurple,
             borderRadius: BorderRadius.circular(AppConstants.radius8w)),
-        child:const  Icon(
+        child: const Icon(
           Icons.add,
           color: AppColors.white,
         ),

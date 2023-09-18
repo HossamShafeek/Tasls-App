@@ -3,7 +3,8 @@ import 'package:tasks_app/core/utils/app_constants.dart';
 import 'package:tasks_app/features/department/presentation/views/create_department_view.dart';
 import 'package:tasks_app/features/department/presentation/views/departments_view.dart';
 import 'package:tasks_app/features/home/presentation/views/widgets/home_view_body.dart';
-import 'package:tasks_app/features/user/presentation/views/cretae_user_view.dart';
+import 'package:tasks_app/features/user/presentation/views/create_user_view.dart';
+import 'package:tasks_app/features/user/presentation/views/users_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -45,6 +46,16 @@ class HomeView extends StatelessWidget {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
                         return const CreateUserView();
+                      },
+                    ));
+                  },
+                ),
+                ListTile(
+                  title: const Text('Users'),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return const UsersView();
                       },
                     ));
                   },
