@@ -9,7 +9,7 @@ import 'package:tasks_app/features/Auth/presentation/cubit/login_cubit/login_cub
 import 'package:tasks_app/features/Auth/presentation/cubit/login_cubit/login_state.dart';
 import 'package:tasks_app/features/Auth/presentation/views/widgets/keep_me_logged_in.dart';
 import 'package:tasks_app/features/Auth/presentation/views/widgets/login_texts_fields_section.dart';
-import 'package:tasks_app/features/home_view.dart';
+import 'package:tasks_app/features/home/presentation/views/home_view.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({Key? key}) : super(key: key);

@@ -6,6 +6,9 @@ class AppColors {
   static const Color blueGreyAccent = Color(0xff5F758B);
   static const Color purple100 = Color(0xff9583FF);
   static const Color deepPurple = Colors.deepPurple;
+  static const Color greenAccent = Colors.greenAccent;
+  static const Color orangeAccent = Colors.orangeAccent;
+  static const Color redAccent = Colors.redAccent;
   static const Color deepPurpleAccent = Colors.deepPurpleAccent;
   static const Color grey = Color(0xff70787D);
   static const Color grey50 = Color(0xffEEF2F5);

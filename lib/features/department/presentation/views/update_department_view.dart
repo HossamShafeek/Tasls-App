@@ -55,7 +55,10 @@ class UpdateDepartmentViewBody extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: AppConstants.defaultPadding,bottom:AppConstants.padding15h),
             padding: EdgeInsets.symmetric(horizontal: AppConstants.padding10w),
-            color: AppColors.grey50,
+            decoration: BoxDecoration(
+              color: AppColors.grey50,
+              borderRadius: BorderRadius.circular(AppConstants.radius8w),
+            ),
             child: DropdownButton(
               isExpanded: true,
               borderRadius: BorderRadius.circular(AppConstants.radius8w),

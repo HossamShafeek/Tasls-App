@@ -8,15 +8,22 @@ class AppConstants {
   static late final String token;
   static const String path = 'assets/images';
   static final double defaultPadding = 12.h;
+  static final double defaultPaddingW = 12.w;
   static final padding15h = 15.h;
   static final double padding10h = 10.h;
   static final double padding10w = 10.w;
+  static final double padding15w = 15.w;
+  static final double padding5w = 5.w;
+  static final double padding3w = 3.w;
   static final double padding8h = 8.h;
   static final double padding5h = 5.h;
   static final double padding3h = 3.h;
   static final double radius15w = 15.w;
   static final double radius8w = 8.w;
   static final double radius10w = 10.w;
+  static final double iconSize24 = 24.sp;
+  static final double iconSize18 = 18.sp;
+  static final double circularSize22 = 22.sp;
 
   static final OutlineInputBorder focusedBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(radius8w),
