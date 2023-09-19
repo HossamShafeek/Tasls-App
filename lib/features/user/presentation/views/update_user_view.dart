@@ -18,9 +18,9 @@ class _UpdateUserViewState extends State<UpdateUserView> {
   @override
   void initState() {
     UpdateUserCubit.get(context).nameController.text=widget.user.name!;
-    UpdateUserCubit.get(context).emailController.text=widget.user.name!;
-    UpdateUserCubit.get(context).phoneController.text=widget.user.name!;
-    UpdateUserCubit.get(context).passwordController.text=widget.user.name!;
+    UpdateUserCubit.get(context).emailController.text=widget.user.email!;
+    UpdateUserCubit.get(context).phoneController.text=widget.user.phone.toString();
+    //UpdateUserCubit.get(context).passwordController.text=widget.user.name!;
     UpdateUserCubit.get(context).groupValue=getUserNumber(userType: widget.user.userType!);
     super.initState();
   }

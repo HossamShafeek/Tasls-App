@@ -73,7 +73,7 @@ class UserRepositoryImplementation extends UserRepository {
             'phone': phone,
             'password': password,
             'user_type': userType,
-            'user_status': 0.toString(),
+            'user_status': 0,
           });
       return Right(CreateUserModel.fromJson(data.data));
     } catch (error) {
