@@ -12,7 +12,8 @@ class UpdateDepartmentViewBody extends StatelessWidget {
   const UpdateDepartmentViewBody({
     Key? key,
     required this.departmentId,
-    required this.managerId, required this.departmentName,
+    required this.managerId,
+    required this.departmentName,
   }) : super(key: key);
 
   final int departmentId;

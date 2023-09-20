@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasks_app/core/errors/failures.dart';
 import 'package:tasks_app/features/user/data/models/create_user_model/craete_user_model.dart';
 import 'package:tasks_app/features/user/data/repository/user_repository.dart';
-import 'package:tasks_app/features/user/presentation/cubits/get_all_users_cubit/get_all_user_state.dart';
+import 'package:tasks_app/features/user/presentation/cubits/update_user_cubit/update_user_state.dart';
 
 class UpdateUserCubit extends Cubit<UpdateUserState> {
   UpdateUserCubit(this.userRepository) : super(UpdateUserInitialState());
@@ -25,7 +25,6 @@ class UpdateUserCubit extends Cubit<UpdateUserState> {
     emit(ChangeGroupValue());
   }
 
-
   CreateUserModel? updateUserModel;
 
   Future<void> updateUser({
@@ -41,8 +40,8 @@ class UpdateUserCubit extends Cubit<UpdateUserState> {
       phone: phoneController.text,
       password: passwordController.text,
       userType: groupValue.toString(),
-        userStatus:0.toString(),
-        //departmentId: 81
+      userStatus: 0.toString(),
+      //departmentId: 81
     );
     result.fold((failure) {
       emit(UpdateUserFailureState(failure.error));

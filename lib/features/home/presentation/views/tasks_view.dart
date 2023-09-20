@@ -17,7 +17,7 @@ class TasksViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const[
+      children: const [
         Text('Tasks View'),
       ],
     );

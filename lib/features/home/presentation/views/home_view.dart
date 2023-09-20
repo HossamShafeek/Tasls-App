@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tasks_app/core/utils/app_constants.dart';
 import 'package:tasks_app/features/department/presentation/views/create_department_view.dart';
 import 'package:tasks_app/features/department/presentation/views/departments_view.dart';
+import 'package:tasks_app/features/home/presentation/views/create_task_view.dart';
 import 'package:tasks_app/features/home/presentation/views/widgets/home_view_body.dart';
 import 'package:tasks_app/features/user/presentation/views/create_user_view.dart';
 import 'package:tasks_app/features/user/presentation/views/users_view.dart';
@@ -56,6 +57,16 @@ class HomeView extends StatelessWidget {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
                         return const UsersView();
+                      },
+                    ));
+                  },
+                ),
+                ListTile(
+                  title: const Text('Create Task'),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return const CreateTaskView();
                       },
                     ));
                   },

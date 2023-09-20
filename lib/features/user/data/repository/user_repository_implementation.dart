@@ -6,6 +6,7 @@ import 'package:tasks_app/core/api/end_points.dart';
 import 'package:tasks_app/core/errors/failures.dart';
 import 'package:tasks_app/core/utils/app_constants.dart';
 import 'package:tasks_app/features/user/data/models/create_user_model/craete_user_model.dart';
+import 'package:tasks_app/features/user/data/models/employyees_model/employees_model.dart';
 import 'package:tasks_app/features/user/data/models/users_model/users_model.dart';
 import 'package:tasks_app/features/user/data/repository/user_repository.dart';
 
@@ -66,7 +67,7 @@ class UserRepositoryImplementation extends UserRepository {
     try {
       Response data = await apiServices.post(
           token: CacheHelper.getString(key: 'token').toString(),
-          endPoint: EndPoints.updateUsers+userId.toString(),
+          endPoint: EndPoints.updateUsers + userId.toString(),
           data: {
             'name': name,
             'email': email,
@@ -77,13 +78,20 @@ class UserRepositoryImplementation extends UserRepository {
           });
       return Right(CreateUserModel.fromJson(data.data));
     } catch (error) {
-      if (error is DioError) {
-        print(error.response!.data['message']['user_status']);
-        print('============================================');
-        return Left(ServerFailure(error.response!.data['message']['user_status'].toString()));
-      } else {
-        return Left(ServerFailure(error.toString()));
-      }
+      return Left(ServerFailure(error.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, EmployeesModel>> getAllEmployees() async{
+    try {
+      Map<String, dynamic> data = await apiServices.get(
+        token: AppConstants.token,
+        endPoint: EndPoints.getAllEmployees,
+      );
+      return Right(EmployeesModel.fromJson(data));
+    } catch (error) {
+      return Left(ServerFailure(error.toString()));
     }
   }
 }

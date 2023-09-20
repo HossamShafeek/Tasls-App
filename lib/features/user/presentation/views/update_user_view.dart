@@ -14,14 +14,15 @@ class UpdateUserView extends StatefulWidget {
 }
 
 class _UpdateUserViewState extends State<UpdateUserView> {
-
   @override
   void initState() {
-    UpdateUserCubit.get(context).nameController.text=widget.user.name!;
-    UpdateUserCubit.get(context).emailController.text=widget.user.email!;
-    UpdateUserCubit.get(context).phoneController.text=widget.user.phone.toString();
+    UpdateUserCubit.get(context).nameController.text = widget.user.name!;
+    UpdateUserCubit.get(context).emailController.text = widget.user.email!;
+    UpdateUserCubit.get(context).phoneController.text =
+        widget.user.phone.toString();
     //UpdateUserCubit.get(context).passwordController.text=widget.user.name!;
-    UpdateUserCubit.get(context).groupValue=getUserNumber(userType: widget.user.userType!);
+    UpdateUserCubit.get(context).groupValue =
+        getUserNumber(userType: widget.user.userType!);
     super.initState();
   }
 
@@ -29,9 +30,9 @@ class _UpdateUserViewState extends State<UpdateUserView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body:  UpdateUserViewBody(user: widget.user,),
+      body: UpdateUserViewBody(
+        user: widget.user,
+      ),
     );
   }
 }
-
-

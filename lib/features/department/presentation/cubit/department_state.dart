@@ -33,9 +33,6 @@ class GetAllDepartmentsFailureState extends DepartmentState {
   GetAllDepartmentsFailureState(this.error);
 }
 
-
-
-
 class UpdateDepartmentsLoadingState extends DepartmentState {}
 
 class UpdateDepartmentsSuccessState extends DepartmentState {

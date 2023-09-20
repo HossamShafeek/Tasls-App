@@ -48,11 +48,11 @@ class DepartmentRepositoryImplementation extends DepartmentRepository {
     required int departmentId,
     required String managerId,
     required name,
-  }) async{
+  }) async {
     try {
       Response data = await apiServices.post(
           token: CacheHelper.getString(key: 'token').toString(),
-          endPoint: EndPoints.updateDepartments+departmentId.toString(),
+          endPoint: EndPoints.updateDepartments + departmentId.toString(),
           data: {
             'manager_id': managerId,
             'name': name,
@@ -60,27 +60,27 @@ class DepartmentRepositoryImplementation extends DepartmentRepository {
       return Right(CreateDepartmentModel.fromJson(data.data));
     } catch (error) {
       if (error is DioError) {
-        return Left(ServerFailure(error.response!.data['message']['user_status'].toString()));
+        return Left(ServerFailure(
+            error.response!.data['message']['user_status'].toString()));
       } else {
         return Left(ServerFailure(error.toString()));
       }
     }
   }
 
-
-  Future<CreateDepartmentModel> updateDepartment2 ({required int departmentId,
+  Future<CreateDepartmentModel> updateDepartment2({
+    required int departmentId,
     required String name,
     required int managerId,
-  })async{
-      Response data = await apiServices.post(
-          token: CacheHelper.getString(key: 'token').toString(),
-          endPoint: EndPoints.updateDepartments+departmentId.toString(),
-          data: {
-            'manager_id': managerId.toString(),
-            'name': name,
-          });
-      print(data);
-      return CreateDepartmentModel.fromJson(data.data);
+  }) async {
+    Response data = await apiServices.post(
+        token: CacheHelper.getString(key: 'token').toString(),
+        endPoint: EndPoints.updateDepartments + departmentId.toString(),
+        data: {
+          'manager_id': managerId.toString(),
+          'name': name,
+        });
+    print(data);
+    return CreateDepartmentModel.fromJson(data.data);
   }
-
 }

@@ -1,22 +1,21 @@
-import 'package:tasks_app/features/user/data/models/users_model/users_model.dart';
+import 'package:tasks_app/features/user/data/models/create_user_model/craete_user_model.dart';
 
-abstract class GetAllUsersState {}
+abstract class UpdateUserState {}
 
-class GetAllUserInitialState extends GetAllUsersState {}
+class UpdateUserInitialState extends UpdateUserState {}
 
+class ChangeGroupValue extends UpdateUserState {}
 
-class ChangeGroupValue extends GetAllUsersState {}
+class UpdateUserLoadingState extends UpdateUserState {}
 
-class GetAllUsersLoadingState extends GetAllUsersState {}
+class UpdateUserSuccessState extends UpdateUserState {
+  final CreateUserModel updateUserModel;
 
-class GetAllUsersSuccessState extends GetAllUsersState {
-  final UsersModel usersModel;
-
-  GetAllUsersSuccessState(this.usersModel);
+  UpdateUserSuccessState(this.updateUserModel);
 }
 
-class GetAllUsersFailureState extends GetAllUsersState {
+class UpdateUserFailureState extends UpdateUserState {
   final String error;
 
-  GetAllUsersFailureState(this.error);
+  UpdateUserFailureState(this.error);
 }

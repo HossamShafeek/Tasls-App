@@ -6,6 +6,9 @@ class AppStrings {
   static const String titleForLogin = 'Welcome Back!';
   static const String subtitleForLogin =
       'Login to access your assigned tasks and personal overview.';
+  static const String titleForCreateTask = 'Add New Task!';
+  static const String subtitleForCreateTask =
+      'Create a new task now and assign it to employees right away.';
   static const String titleForCreateUser = 'Add New User!';
   static const String subtitleForCreateUser =
       'Create a new user now and assign them tasks right away.';

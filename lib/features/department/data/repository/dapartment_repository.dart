@@ -15,8 +15,9 @@ abstract class DepartmentRepository {
     required name,
   });
 
-
-  Future<CreateDepartmentModel> updateDepartment2 ({required int departmentId,
+  Future<CreateDepartmentModel> updateDepartment2({
+    required int departmentId,
     required String name,
-    required int managerId,});
+    required int managerId,
+  });
 }

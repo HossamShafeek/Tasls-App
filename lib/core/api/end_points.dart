@@ -7,4 +7,5 @@ class EndPoints {
   static const String createUser = 'user/store';
   static const String getAllUsers = 'user/index';
   static const String updateUsers = 'user/update/';
+  static const String getAllEmployees = 'user/show-employees';
 }

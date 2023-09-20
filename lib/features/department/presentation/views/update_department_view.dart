@@ -39,7 +39,6 @@ class _UpdateDepartmentViewState extends State<UpdateDepartmentView> {
   }
 }
 
-
 // Text(
 //   'Manager',
 //   style: AppStyles.textStyle16,
