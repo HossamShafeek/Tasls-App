@@ -4,9 +4,9 @@ abstract class TaskState {}
 
 class TaskInitialState extends TaskState {}
 
-class ChangeDropdownValueState extends TaskState{}
+class ChangeDropdownValueState extends TaskState {}
 
-class CreateTaskLoadingState extends TaskState{}
+class CreateTaskLoadingState extends TaskState {}
 
 class CreateTaskSuccessState extends TaskState {
   final CreateTaskModel createTaskModel;

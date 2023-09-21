@@ -8,4 +8,5 @@ class EndPoints {
   static const String getAllUsers = 'user/index';
   static const String updateUsers = 'user/update/';
   static const String getAllEmployees = 'user/show-employees';
+  static const String createTask = 'task/store';
 }

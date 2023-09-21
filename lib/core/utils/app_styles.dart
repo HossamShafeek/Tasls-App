@@ -3,8 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasks_app/core/utils/app_colors.dart';
 
 abstract class AppStyles {
+  static final textStyle12 = TextStyle(fontSize: 10.sp, color: AppColors.white);
   static final textStyle14 = TextStyle(
     fontSize: 12.sp,
+  );
+  static final textStyle15 = TextStyle(
+    fontSize: 13.sp,
+    color: AppColors.white,
+    fontWeight: FontWeight.bold,
   );
 
   static final textStyle16 = TextStyle(
@@ -18,14 +24,12 @@ abstract class AppStyles {
 
   static final textStyle20 = TextStyle(
     fontSize: 18.sp,
-    fontWeight: FontWeight.bold,
-    color: AppColors.white,
+    color: AppColors.deepPurple,
   );
 
   static final textStyle25 = TextStyle(
     fontSize: 23.sp,
-    fontWeight: FontWeight.bold,
-    color: AppColors.white,
+    color: AppColors.deepPurple,
   );
 
   static final textStyle30 = TextStyle(

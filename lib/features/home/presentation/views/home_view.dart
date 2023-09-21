@@ -1,95 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:tasks_app/core/utils/app_constants.dart';
-import 'package:tasks_app/features/department/presentation/views/create_department_view.dart';
-import 'package:tasks_app/features/department/presentation/views/departments_view.dart';
-import 'package:tasks_app/features/home/presentation/views/create_task_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tasks_app/features/home/presentation/cubits/animated_drawer_cubit/animated_drawer_cubit.dart';
+import 'package:tasks_app/features/home/presentation/cubits/animated_drawer_cubit/animated_drawer_state.dart';
 import 'package:tasks_app/features/home/presentation/views/widgets/home_view_body.dart';
-import 'package:tasks_app/features/user/presentation/views/create_user_view.dart';
-import 'package:tasks_app/features/user/presentation/views/users_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      initialIndex: 0,
-      child: Scaffold(
-        drawer: Drawer(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: AppConstants.padding15h),
-            child: Column(
-              children: [
-                ListTile(
-                  title: const Text('Create Department'),
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) {
-                        return const CreateDepartmentView();
-                      },
-                    ));
-                  },
-                ),
-                ListTile(
-                  title: const Text('Departments'),
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) {
-                        return const DepartmentsView();
-                      },
-                    ));
-                  },
-                ),
-                ListTile(
-                  title: const Text('Create User'),
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) {
-                        return const CreateUserView();
-                      },
-                    ));
-                  },
-                ),
-                ListTile(
-                  title: const Text('Users'),
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) {
-                        return const UsersView();
-                      },
-                    ));
-                  },
-                ),
-                ListTile(
-                  title: const Text('Create Task'),
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) {
-                        return const CreateTaskView();
-                      },
-                    ));
-                  },
-                ),
-              ],
+    return BlocBuilder<AnimatedDrawerCubit, AnimatedDrawerState>(
+      builder: (context, state) {
+        return DefaultTabController(
+          length: 2,
+          initialIndex: 0,
+          child: AnimatedContainer(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            clipBehavior: Clip.antiAlias,
+            transform: Matrix4.translationValues(
+                AnimatedDrawerCubit.get(context).xOffset,
+                AnimatedDrawerCubit.get(context).yOffset,
+                0)
+              ..scale(AnimatedDrawerCubit.get(context).scaleFactor),
+            duration: const Duration(milliseconds: 300),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(
+                  AnimatedDrawerCubit.get(context).isOpenDrawer ? 20.0 : 0.0),
             ),
+            child: const HomeViewBody(),
           ),
-        ),
-        body: const HomeViewBody(),
-      ),
+        );
+      },
     );
   }
 }
-// Center(
-// child: TextButton(
-// onPressed: () {
-// CacheHelper.removeData(key: 'token').then((value) {
-// Navigator.pushReplacement(context, MaterialPageRoute(
-// builder: (context) {
-// return const LoginView();
-// },
-// ));
-// });
-// },
-// child: const Text('Logout')),
-// ),

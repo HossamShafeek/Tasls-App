@@ -6,13 +6,11 @@ import 'package:tasks_app/features/user/data/repository/user_repository.dart';
 import 'package:tasks_app/features/user/presentation/cubits/get_all_employees/get_all_employees_state.dart';
 
 class GetAllEmployeesCubit extends Cubit<GetAllEmployeesState> {
-  GetAllEmployeesCubit(this.userRepository) : super(GetAllEmployeesInitialState());
+  GetAllEmployeesCubit(this.userRepository)
+      : super(GetAllEmployeesInitialState());
   final UserRepository userRepository;
 
   static GetAllEmployeesCubit get(context) => BlocProvider.of(context);
-
-
-
 
   EmployeesModel? employeesModel;
 
@@ -27,7 +25,4 @@ class GetAllEmployeesCubit extends Cubit<GetAllEmployeesState> {
       emit(GetAllEmployeesSuccessState(employeesModel));
     });
   }
-
-
-
 }

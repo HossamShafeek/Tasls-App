@@ -4,10 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasks_app/config/local/cache_helper.dart';
 import 'package:tasks_app/config/themes/app_theme.dart';
 import 'package:tasks_app/core/api/api_services_implementation.dart';
+import 'package:tasks_app/features/Auth/data/repository/login_repository_implementation.dart';
+import 'package:tasks_app/features/Auth/presentation/cubit/login_cubit/login_cubit.dart';
 import 'package:tasks_app/features/Auth/presentation/views/login_view.dart';
 import 'package:tasks_app/features/department/data/repository/department_repository_implementation.dart';
 import 'package:tasks_app/features/department/presentation/cubit/department_cubit.dart';
 import 'package:tasks_app/features/home/data/repository/home_repository_implementation.dart';
+import 'package:tasks_app/features/home/presentation/cubits/animated_drawer_cubit/animated_drawer_cubit.dart';
 import 'package:tasks_app/features/home/presentation/cubits/task_cubit/task_cubit.dart';
 import 'package:tasks_app/features/user/data/repository/user_repository_implementation.dart';
 import 'package:tasks_app/features/user/presentation/cubits/create_user_cubit/cretae_user_cubit.dart';
@@ -33,6 +36,13 @@ class TasksApp extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return MultiBlocProvider(
           providers: [
+            BlocProvider(
+              create: (context) => AnimatedDrawerCubit(),
+            ),
+            BlocProvider(
+              create: (context) => LoginCubit(
+                  LoginRepositoryImplementation(ApiServicesImplementation())),
+            ),
             BlocProvider(
               create: (context) => DepartmentCubit(
                   DepartmentRepositoryImplementation(

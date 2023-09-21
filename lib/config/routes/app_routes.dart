@@ -10,9 +10,7 @@ class Routes {
 
 class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      
-    }
+    switch (settings.name) {}
     return undefinedRoute();
   }
 

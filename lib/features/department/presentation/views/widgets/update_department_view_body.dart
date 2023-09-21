@@ -30,9 +30,9 @@ class UpdateDepartmentViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TitleAndSubtitle(
-                title: ' Update Department!',
+                title: AppStrings.password,
                 subtitle:
-                    'Update  department details and assign a new manager to continue work!',
+                    AppStrings.subtitleForUpdateDepartment,
               ),
               CustomTextField(
                 controller:

@@ -28,5 +28,4 @@ abstract class UserRepository {
   });
 
   Future<Either<Failure, EmployeesModel>> getAllEmployees();
-
 }

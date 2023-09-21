@@ -6,9 +6,9 @@ abstract class HomeRepository {
   Future<Either<Failure, CreateTaskModel>> createTask({
     required String title,
     required String description,
-   // required String status,
-    required DateTime startDate,
-    required DateTime endDate,
+    // required String status,
+    required String startDate,
+    required String endDate,
     required String employeeId,
     int? departmentId,
   });

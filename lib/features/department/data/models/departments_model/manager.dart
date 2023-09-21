@@ -6,6 +6,7 @@ class Manager {
   int? phone;
   String? status;
   String? userType;
+  int? departmentId;
 
   Manager({
     this.id,
@@ -15,6 +16,7 @@ class Manager {
     this.phone,
     this.status,
     this.userType,
+    this.departmentId,
   });
 
   factory Manager.fromJson(Map<String, dynamic> json) => Manager(
@@ -25,6 +27,7 @@ class Manager {
         phone: json['phone'] as int?,
         status: json['status'] as String?,
         userType: json['user_type'] as String?,
+        departmentId: json['department_id'] as int?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -35,5 +38,6 @@ class Manager {
         'phone': phone,
         'status': status,
         'user_type': userType,
+        'department_id': departmentId,
       };
 }

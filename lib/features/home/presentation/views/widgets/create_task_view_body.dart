@@ -23,30 +23,33 @@ class CreateTaskViewBody extends StatelessWidget {
               EdgeInsets.symmetric(horizontal: AppConstants.defaultPadding),
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
-            padding: EdgeInsets.only(bottom: AppConstants.defaultPadding),
-            child: Column(
-              children: [
-                const TitleAndSubtitle(
-                  title: AppStrings.titleForCreateTask,
-                  subtitle: AppStrings.subtitleForCreateTask,
-                ),
-                const DatePickerRangeWidget(),
-                const CreateTaskTextsFieldsSection(),
-                const CustomDropDownWidget(),
-                GradientButton(
-                  onPressed: () {
-                    if (TaskCubit.get(context)
-                        .formKey
-                        .currentState!
-                        .validate()) {
-                      print(TaskCubit.get(context)
-                          .multiDatePickerValueWithDefaultValue);
-                      TaskCubit.get(context).createTask();
-                    }
-                  },
-                  title: AppStrings.create,
-                ),
-              ],
+            padding: EdgeInsets.symmetric(vertical: AppConstants.defaultPadding),
+            child: Form(
+              key: TaskCubit.get(context).formKey,
+              child: Column(
+                children: [
+                  const TitleAndSubtitle(
+                    title: AppStrings.titleForCreateTask,
+                    subtitle: AppStrings.subtitleForCreateTask,
+                  ),
+                  const DatePickerRangeWidget(),
+                  const CreateTaskTextsFieldsSection(),
+                  const CustomDropDownWidget(),
+                  GradientButton(
+                    onPressed: () {
+                      if (TaskCubit.get(context)
+                          .formKey
+                          .currentState!
+                          .validate()) {
+                        print(TaskCubit.get(context)
+                            .multiDatePickerValueWithDefaultValue);
+                        TaskCubit.get(context).createTask();
+                      }
+                    },
+                    title: AppStrings.create,
+                  ),
+                ],
+              ),
             ),
           ),
         );

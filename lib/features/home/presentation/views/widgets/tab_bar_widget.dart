@@ -16,12 +16,13 @@ class TabBarWidget extends StatelessWidget {
           right: AppConstants.defaultPadding,
           top: AppConstants.defaultPadding,
         ),
-        child: Column(
-          children: const [
+        child: const Column(
+          children: [
             SizedBox(
               width: double.infinity,
               height: 30,
               child: TabBar(
+                  indicatorColor: AppColors.deepPurple,
                   labelColor: AppColors.deepPurple,
                   unselectedLabelColor: AppColors.grey500,
                   physics: BouncingScrollPhysics(),

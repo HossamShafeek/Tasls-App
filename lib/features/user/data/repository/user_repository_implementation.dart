@@ -83,7 +83,7 @@ class UserRepositoryImplementation extends UserRepository {
   }
 
   @override
-  Future<Either<Failure, EmployeesModel>> getAllEmployees() async{
+  Future<Either<Failure, EmployeesModel>> getAllEmployees() async {
     try {
       Map<String, dynamic> data = await apiServices.get(
         token: AppConstants.token,

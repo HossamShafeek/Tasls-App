@@ -15,12 +15,12 @@ class TitleAndSubtitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          title,
-          style: AppStyles.textStyle30,
-        ),
+        // Text(
+        //   title,
+        //   style: AppStyles.textStyle30,
+        // ),
         Padding(
-          padding: EdgeInsets.symmetric(vertical: AppConstants.defaultPadding),
+          padding: EdgeInsets.only(bottom: AppConstants.defaultPadding),
           child: Text(
             subtitle,
             style: AppStyles.textStyle16.copyWith(color: AppColors.grey),

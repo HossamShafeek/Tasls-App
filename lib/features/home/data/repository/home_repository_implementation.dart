@@ -17,15 +17,15 @@ class HomeRepositoryImplementation extends HomeRepository {
     required String title,
     required String description,
     //required String status,
-    required DateTime startDate,
-    required DateTime endDate,
+    required String startDate,
+    required String endDate,
     required String employeeId,
     int? departmentId,
   }) async {
     try {
       Response data = await apiServices.post(
           token: CacheHelper.getString(key: 'token').toString(),
-          endPoint: EndPoints.createUser,
+          endPoint: EndPoints.createTask,
           data: {
             'name': title,
             'description': description,

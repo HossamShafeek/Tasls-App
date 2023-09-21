@@ -7,11 +7,11 @@ import 'package:tasks_app/features/home/presentation/cubits/task_cubit/task_cubi
 import 'package:tasks_app/features/home/presentation/cubits/task_cubit/task_state.dart';
 import 'package:tasks_app/features/user/presentation/cubits/get_all_employees/get_all_employees_state.dart';
 import 'package:tasks_app/features/user/presentation/cubits/get_all_employees/gett_all_employees_cubit.dart';
+
 class CustomDropDownWidget extends StatefulWidget {
   const CustomDropDownWidget({
     Key? key,
   }) : super(key: key);
-
 
   @override
   State<CustomDropDownWidget> createState() => _CustomDropDownWidgetState();
@@ -26,14 +26,12 @@ class _CustomDropDownWidgetState extends State<CustomDropDownWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TaskCubit,TaskState>(builder: (context, state) {
-      return BlocBuilder<GetAllEmployeesCubit, GetAllEmployeesState>(
-        builder: (context, state) {
-          if (state is GetAllEmployeesSuccessState) {
-            return Form(
-              key: TaskCubit.get(context).formKey,
-              autovalidateMode: AutovalidateMode.always,
-              child: Column(
+    return BlocBuilder<TaskCubit, TaskState>(
+      builder: (context, state) {
+        return BlocBuilder<GetAllEmployeesCubit, GetAllEmployeesState>(
+          builder: (context, state) {
+            if (state is GetAllEmployeesSuccessState) {
+              return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -46,8 +44,8 @@ class _CustomDropDownWidgetState extends State<CustomDropDownWidget> {
                       bottom: AppConstants.padding15h,
                     ),
                     child: DropdownButtonFormField(
-                      validator:(value) => value == null
-                    ? 'Please assigned employee' : null,
+                      validator: (value) =>
+                          value == null ? 'Please assigned employee' : null,
                       decoration: InputDecoration(
                         fillColor: AppColors.grey50,
                         filled: true,
@@ -60,36 +58,38 @@ class _CustomDropDownWidgetState extends State<CustomDropDownWidget> {
                         focusedBorder: AppConstants.enabledBorder,
                       ),
                       isExpanded: true,
-                      borderRadius: BorderRadius.circular(AppConstants.radius8w),
+                      borderRadius:
+                          BorderRadius.circular(AppConstants.radius8w),
                       hint: Text(
                         'Assigned Employee',
                         style: AppStyles.textStyle14,
                       ),
                       items: state.employeesModel.data!
                           .map((e) => DropdownMenuItem(
-                        value: e,
-                        child: Text(e.name!),
-                      ))
+                                value: e,
+                                child: Text(e.name!),
+                              ))
                           .toList(),
-                      onChanged: (value){
-                        TaskCubit.get(context).changeDropdownValue(value: value);
+                      onChanged: (value) {
+                        TaskCubit.get(context)
+                            .changeDropdownValue(value: value);
                       },
                     ),
                   ),
                 ],
-              ),
-            );
-          } else if (state is GetAllEmployeesFailureState) {
-            return Center(
-              child: Text(state.error),
-            );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      );
-    },);
+              );
+            } else if (state is GetAllEmployeesFailureState) {
+              return Center(
+                child: Text(state.error),
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        );
+      },
+    );
   }
 }

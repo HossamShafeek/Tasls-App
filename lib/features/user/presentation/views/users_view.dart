@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tasks_app/core/utils/app_strings.dart';
+import 'package:tasks_app/core/widgets/custom_back_button.dart';
 import 'package:tasks_app/features/user/presentation/cubits/get_all_users_cubit/gett_all_user_cubit.dart';
 import 'package:tasks_app/features/user/presentation/views/widgets/users_view_body.dart';
 
@@ -19,7 +21,10 @@ class _UsersViewState extends State<UsersView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar:AppBar(
+        leading: const CustomBackButton(),
+        title: const Text(AppStrings.titleForUsers),
+      ),
       body: const UsersViewBody(),
     );
   }
