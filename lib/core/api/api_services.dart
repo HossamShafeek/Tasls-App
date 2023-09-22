@@ -13,4 +13,10 @@ abstract class ApiServices {
     String token,
     required Map<String, dynamic> data,
   });
+  Future<Response> delete({
+    required String endPoint,
+    Map<String, dynamic> queryParameters,
+    String token,
+    Map<String, dynamic> data,
+  });
 }

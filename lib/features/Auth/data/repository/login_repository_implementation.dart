@@ -22,7 +22,12 @@ class LoginRepositoryImplementation extends LoginRepository {
       LoginModel loginModel = LoginModel.fromJson(data.data);
       return Right(loginModel);
     } catch (error) {
-      return Left(ServerFailure(error.toString()));
+      if (error is DioError) {
+        return Left(ServerFailure(
+            error.response!.data['message'].toString()));
+      } else {
+        return Left(ServerFailure(error.toString()));
+      }
     }
   }
 }

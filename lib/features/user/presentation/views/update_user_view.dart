@@ -11,7 +11,8 @@ class UpdateUserView extends StatefulWidget {
     required this.name,
     required this.email,
     required this.phone,
-    required this.userType, required this.id,
+    required this.userType,
+    required this.id,
   }) : super(key: key);
 
   final String name;
@@ -39,9 +40,8 @@ class _UpdateUserViewState extends State<UpdateUserView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const CustomBackButton(
-        ),
-        title:const  Text(AppStrings.titleForUpdateUser),
+        leading: const CustomBackButton(),
+        title: const Text(AppStrings.titleForUpdateUser),
       ),
       body: UpdateUserViewBody(
         id: widget.id,

@@ -10,8 +10,8 @@ abstract class UserRepository {
     required String email,
     required String phone,
     required String password,
-    required int userType,
-    int? departmentId,
+    required String userType,
+    required String departmentId,
   });
 
   Future<Either<Failure, UsersModel>> getAllUsers();
@@ -24,8 +24,12 @@ abstract class UserRepository {
     required String password,
     required String userType,
     required String userStatus,
-    int? departmentId,
+    required String departmentId,
   });
 
   Future<Either<Failure, EmployeesModel>> getAllEmployees();
+
+  Future<Either<Failure, UsersModel>> getAllManagers();
+
+  Future<Either<Failure, Map<String,dynamic>>> deleteUser({required String userId});
 }

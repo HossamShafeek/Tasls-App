@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:tasks_app/core/utils/app_constants.dart';
-import 'package:tasks_app/features/department/presentation/cubit/department_cubit.dart';
-import 'package:tasks_app/features/department/presentation/cubit/department_state.dart';
+import 'package:tasks_app/features/department/presentation/cubits/get_departments_cubit/get_all_departments_cubit.dart';
+import 'package:tasks_app/features/department/presentation/cubits/get_departments_cubit/get_all_departments_state.dart';
 import 'package:tasks_app/features/department/presentation/views/widgets/department_grid_view_item.dart';
 
 class DepartmentsViewBody extends StatelessWidget {
   const DepartmentsViewBody({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DepartmentCubit, DepartmentState>(
+    return BlocBuilder<GetAllDepartmentsCubit, GetAllDepartmentsState>(
       builder: (context, state) {
         if (state is GetAllDepartmentsSuccessState) {
           return StaggeredGridView.countBuilder(

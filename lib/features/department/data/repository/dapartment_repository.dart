@@ -14,10 +14,4 @@ abstract class DepartmentRepository {
     required String managerId,
     required name,
   });
-
-  Future<CreateDepartmentModel> updateDepartment2({
-    required int departmentId,
-    required String name,
-    required int managerId,
-  });
 }

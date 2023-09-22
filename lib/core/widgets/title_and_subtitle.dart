@@ -4,21 +4,22 @@ import 'package:tasks_app/core/utils/app_constants.dart';
 import 'package:tasks_app/core/utils/app_styles.dart';
 
 class TitleAndSubtitle extends StatelessWidget {
-  const TitleAndSubtitle(
-      {Key? key, required this.title, required this.subtitle})
+  const TitleAndSubtitle({Key? key, required this.subtitle, this.title})
       : super(key: key);
 
-  final String title;
+  final String? title;
   final String subtitle;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Text(
-        //   title,
-        //   style: AppStyles.textStyle30,
-        // ),
+        title != null
+            ? Text(
+                title!,
+                style: AppStyles.textStyle30,
+              )
+            : const SizedBox(),
         Padding(
           padding: EdgeInsets.only(bottom: AppConstants.defaultPadding),
           child: Text(

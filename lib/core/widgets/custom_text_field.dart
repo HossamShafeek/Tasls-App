@@ -16,7 +16,7 @@ class CustomTextField extends StatelessWidget {
     this.obscureText = false,
     this.prefixIcon,
     this.paddingForTop,
-    this.paddingForBottom,
+    this.paddingForBottom, this.maxLines, this.readOnly = false,
   }) : super(key: key);
   final TextEditingController controller;
   final String? Function(String?)? validator;
@@ -29,6 +29,8 @@ class CustomTextField extends StatelessWidget {
   final bool obscureText;
   final double? paddingForTop;
   final double? paddingForBottom;
+  final int? maxLines;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,11 @@ class CustomTextField extends StatelessWidget {
             bottom: paddingForBottom ?? AppConstants.padding15h,
           ),
           child: TextFormField(
+            readOnly:readOnly,
+            onTapOutside: (value) {
+              FocusScope.of(context).unfocus();
+            },
+            //maxLines: maxLines ?? 1,
             controller: controller,
             //cursorColor: AppColors.blue,
             keyboardType: textInputType,

@@ -21,6 +21,7 @@ class HomeViewBody extends StatelessWidget {
                   ));
             },
             child: const CustomAppBar(
+              isUser: true,
               rightWidget: AddUserAndTask(),
             ),
           ),

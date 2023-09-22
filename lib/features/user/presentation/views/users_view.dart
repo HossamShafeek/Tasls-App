@@ -21,7 +21,7 @@ class _UsersViewState extends State<UsersView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(
+      appBar: AppBar(
         leading: const CustomBackButton(),
         title: const Text(AppStrings.titleForUsers),
       ),

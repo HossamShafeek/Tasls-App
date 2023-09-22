@@ -9,11 +9,9 @@ import 'package:tasks_app/features/department/data/models/departments_model/datu
 import 'package:tasks_app/features/department/presentation/views/update_department_view.dart';
 
 class DepartmentsGridViewItem extends StatelessWidget {
-  const DepartmentsGridViewItem(
-      {Key? key, required this.departmentsModel})
+  const DepartmentsGridViewItem({Key? key, required this.departmentsModel})
       : super(key: key);
   final Datum departmentsModel;
-
 
   @override
   Widget build(BuildContext context) {

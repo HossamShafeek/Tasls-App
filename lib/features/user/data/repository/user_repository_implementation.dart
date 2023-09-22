@@ -21,8 +21,8 @@ class UserRepositoryImplementation extends UserRepository {
     required String email,
     required String phone,
     required String password,
-    required int userType,
-    int? departmentId,
+    required String userType,
+    required String departmentId,
   }) async {
     try {
       Response data = await apiServices.post(
@@ -34,10 +34,16 @@ class UserRepositoryImplementation extends UserRepository {
             'phone': phone,
             'password': password,
             'user_type': userType,
+            'department_id': departmentId.toString(),
           });
       return Right(CreateUserModel.fromJson(data.data));
     } catch (error) {
-      return Left(ServerFailure(error.toString()));
+      if (error is DioError) {
+        return Left(ServerFailure(
+            error.response!.data['message'].toString()));
+      } else {
+        return Left(ServerFailure(error.toString()));
+      }
     }
   }
 
@@ -50,7 +56,12 @@ class UserRepositoryImplementation extends UserRepository {
       );
       return Right(UsersModel.fromJson(data));
     } catch (error) {
-      return Left(ServerFailure(error.toString()));
+      if (error is DioError) {
+        return Left(ServerFailure(
+            error.response!.data['message'].toString()));
+      } else {
+        return Left(ServerFailure(error.toString()));
+      }
     }
   }
 
@@ -63,7 +74,7 @@ class UserRepositoryImplementation extends UserRepository {
       required String password,
       required String userType,
       required String userStatus,
-      int? departmentId}) async {
+      required String departmentId}) async {
     try {
       Response data = await apiServices.post(
           token: CacheHelper.getString(key: 'token').toString(),
@@ -75,10 +86,17 @@ class UserRepositoryImplementation extends UserRepository {
             'password': password,
             'user_type': userType,
             'user_status': 0,
+            'department_id': departmentId,
+
           });
       return Right(CreateUserModel.fromJson(data.data));
     } catch (error) {
-      return Left(ServerFailure(error.toString()));
+      if (error is DioError) {
+        return Left(ServerFailure(
+            error.response!.data['message'].toString()));
+      } else {
+        return Left(ServerFailure(error.toString()));
+      }
     }
   }
 
@@ -91,7 +109,50 @@ class UserRepositoryImplementation extends UserRepository {
       );
       return Right(EmployeesModel.fromJson(data));
     } catch (error) {
-      return Left(ServerFailure(error.toString()));
+      if (error is DioError) {
+        return Left(ServerFailure(
+            error.response!.data['message'].toString()));
+      } else {
+        return Left(ServerFailure(error.toString()));
+      }
     }
   }
+
+  @override
+  Future<Either<Failure, UsersModel>> getAllManagers() async {
+    try {
+      Map<String, dynamic> data = await apiServices.get(
+        token: AppConstants.token,
+        endPoint: EndPoints.getAllManagers,
+      );
+      return Right(UsersModel.fromJson(data));
+    } catch (error) {
+      if (error is DioError) {
+        return Left(ServerFailure(
+            error.response!.data['message'].toString()));
+      } else {
+        return Left(ServerFailure(error.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure,Map<String,dynamic>>> deleteUser({required String userId}) async{
+    try{
+      Response data = await apiServices.delete(
+        token: AppConstants.token,
+        endPoint: EndPoints.deleteUser+userId,
+      );
+      return Right(data.data);
+    }catch(error){
+      if (error is DioError) {
+        return Left(ServerFailure(
+            error.response!.data['message'].toString()));
+      } else {
+        return Left(ServerFailure(error.toString()));
+      }
+    }
+  }
+
+
 }

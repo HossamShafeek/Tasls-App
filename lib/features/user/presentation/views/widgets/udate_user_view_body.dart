@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tasks_app/core/functions/show_snack_bar.dart';
 import 'package:tasks_app/core/utils/app_constants.dart';
 import 'package:tasks_app/core/utils/app_strings.dart';
 import 'package:tasks_app/core/widgets/gradient_button.dart';
@@ -17,7 +18,13 @@ class UpdateUserViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<UpdateUserCubit, UpdateUserState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is UpdateUserFailureState) {
+          showErrorSnackBar(context: context, message: state.error);
+        }else if(state is UpdateUserSuccessState){
+          showSuccessSnackBar(context: context, message: state.updateUserModel.message!);
+        }
+      },
       builder: (context, state) {
         return Padding(
           padding: EdgeInsets.all(AppConstants.defaultPadding),
@@ -25,8 +32,8 @@ class UpdateUserViewBody extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
+                state is UpdateUserLoadingState? const LinearProgressIndicator():const SizedBox(),
                 const TitleAndSubtitle(
-                  title: AppStrings.titleForUpdateUser,
                   subtitle: AppStrings.subtitleForUpdateUser,
                 ),
                 const UpdateUserTextsFieldsSection(),

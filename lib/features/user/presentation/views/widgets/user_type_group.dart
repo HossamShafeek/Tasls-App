@@ -9,7 +9,7 @@ class UserTypeGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserCubit, UserState>(
+    return BlocBuilder<CreateUserCubit, CreateUserState>(
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -18,9 +18,9 @@ class UserTypeGroup extends StatelessWidget {
             children: [
               RadioMenuButton(
                 value: 0,
-                groupValue: UserCubit.get(context).groupValue,
+                groupValue: CreateUserCubit.get(context).groupValue,
                 onChanged: (value) {
-                  UserCubit.get(context).changeGroupValue(newValue: value!);
+                  CreateUserCubit.get(context).changeGroupValue(newValue: value!);
                 },
                 child: Text(
                   'Admin',
@@ -29,24 +29,24 @@ class UserTypeGroup extends StatelessWidget {
               ),
               RadioMenuButton(
                 value: 1,
-                groupValue: UserCubit.get(context).groupValue,
+                groupValue: CreateUserCubit.get(context).groupValue,
                 child: Text(
                   'Manager',
                   style: AppStyles.textStyle14,
                 ),
                 onChanged: (value) {
-                  UserCubit.get(context).changeGroupValue(newValue: value!);
+                  CreateUserCubit.get(context).changeGroupValue(newValue: value!);
                 },
               ),
               RadioMenuButton(
                 value: 2,
-                groupValue: UserCubit.get(context).groupValue,
+                groupValue: CreateUserCubit.get(context).groupValue,
                 child: Text(
                   'Employee',
                   style: AppStyles.textStyle14,
                 ),
                 onChanged: (value) {
-                  UserCubit.get(context).changeGroupValue(newValue: value!);
+                  CreateUserCubit.get(context).changeGroupValue(newValue: value!);
                 },
               ),
             ],

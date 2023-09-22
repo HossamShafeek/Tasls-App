@@ -24,7 +24,7 @@ class DrawerButtonsSection extends StatelessWidget {
           },
         ),
         DrawerButtonsSectionItem(
-          title: 'Create Users',
+          title: 'Create User',
           icon: IconBroken.Add_User,
           onTap: () {
             Navigator.push(context, MaterialPageRoute(

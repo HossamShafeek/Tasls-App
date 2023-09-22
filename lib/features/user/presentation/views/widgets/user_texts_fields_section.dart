@@ -9,15 +9,15 @@ class UserTextsFieldsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserCubit, UserState>(
+    return BlocBuilder<CreateUserCubit, CreateUserState>(
       builder: (context, state) {
         return Form(
-          key: UserCubit.get(context).formKey,
+          key: CreateUserCubit.get(context).formKey,
           child: Column(
             children: [
               CustomTextField(
                 textInputType: TextInputType.name,
-                controller: UserCubit.get(context).nameController,
+                controller: CreateUserCubit.get(context).nameController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your name';
@@ -29,7 +29,7 @@ class UserTextsFieldsSection extends StatelessWidget {
               ),
               CustomTextField(
                 textInputType: TextInputType.emailAddress,
-                controller: UserCubit.get(context).emailController,
+                controller: CreateUserCubit.get(context).emailController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your email';
@@ -41,7 +41,7 @@ class UserTextsFieldsSection extends StatelessWidget {
               ),
               CustomTextField(
                 textInputType: TextInputType.visiblePassword,
-                controller: UserCubit.get(context).passwordController,
+                controller: CreateUserCubit.get(context).passwordController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your password';
@@ -55,7 +55,7 @@ class UserTextsFieldsSection extends StatelessWidget {
               ),
               CustomTextField(
                 textInputType: TextInputType.phone,
-                controller: UserCubit.get(context).phoneController,
+                controller: CreateUserCubit.get(context).phoneController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your phone';

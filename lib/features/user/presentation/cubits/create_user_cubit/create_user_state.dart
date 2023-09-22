@@ -1,21 +1,21 @@
 import 'package:tasks_app/features/user/data/models/create_user_model/craete_user_model.dart';
 
-abstract class UserState {}
+abstract class CreateUserState {}
 
-class UserInitialState extends UserState {}
+class UserInitialState extends CreateUserState {}
 
-class CreateUserLoadingState extends UserState {}
+class CreateUserLoadingState extends CreateUserState {}
 
-class CreateUserSuccessState extends UserState {
+class CreateUserSuccessState extends CreateUserState {
   final CreateUserModel createUserModel;
 
   CreateUserSuccessState(this.createUserModel);
 }
 
-class CreateUserFailureState extends UserState {
+class CreateUserFailureState extends CreateUserState {
   final String error;
 
   CreateUserFailureState(this.error);
 }
 
-class ChangeGroupValue extends UserState {}
+class ChangeGroupValue extends CreateUserState {}

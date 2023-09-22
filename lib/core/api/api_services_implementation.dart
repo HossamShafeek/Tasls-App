@@ -34,12 +34,30 @@ class ApiServicesImplementation implements ApiServices {
       {required String endPoint,
       Map<String, dynamic>? queryParameters,
       String? token,
-      required Map<String, dynamic> data}) async {
+      required Map<String, dynamic>? data}) async {
     _dio!.options.headers = {
       'Authorization': 'Bearer $token' ?? '',
       'Accept': 'application/json',
     };
     return await _dio!.post(
+      endPoint,
+      queryParameters: queryParameters,
+      data: data,
+    );
+  }
+
+  @override
+  Future<Response> delete({
+    required String endPoint,
+    Map<String, dynamic>? queryParameters,
+    String? token,
+     Map<String, dynamic>? data,
+  }) async{
+    _dio!.options.headers = {
+      'Authorization': 'Bearer $token' ?? '',
+      'Accept': 'application/json',
+    };
+    return await _dio!.delete(
       endPoint,
       queryParameters: queryParameters,
       data: data,

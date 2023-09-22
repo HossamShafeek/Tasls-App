@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tasks_app/core/utils/app_colors.dart';
 import 'package:tasks_app/core/utils/app_constants.dart';
-import 'package:tasks_app/features/home/presentation/views/tasks_view.dart';
+import 'package:tasks_app/features/home/presentation/views/all_tasks_view.dart';
 import 'package:tasks_app/features/home/presentation/views/users_view.dart';
 
 class TabBarWidget extends StatelessWidget {
@@ -36,7 +36,7 @@ class TabBarWidget extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 children: [
                   UsersView(),
-                  TasksView(),
+                  AllTasksView(),
                 ],
               ),
             ),

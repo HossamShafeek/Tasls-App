@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tasks_app/core/utils/app_strings.dart';
 import 'package:tasks_app/core/widgets/custom_back_button.dart';
-import 'package:tasks_app/features/department/presentation/cubit/department_cubit.dart';
+import 'package:tasks_app/features/department/presentation/cubits/update_department_cubit/update_department_cubit.dart';
 import 'package:tasks_app/features/department/presentation/views/widgets/update_department_view_body.dart';
 
 class UpdateDepartmentView extends StatefulWidget {
@@ -23,7 +23,7 @@ class UpdateDepartmentView extends StatefulWidget {
 class _UpdateDepartmentViewState extends State<UpdateDepartmentView> {
   @override
   void initState() {
-    DepartmentCubit.get(context).nameControllerForUpdate.text =
+    UpdateDepartmentCubit.get(context).nameControllerForUpdate.text =
         widget.departmentName;
     super.initState();
   }
@@ -32,9 +32,8 @@ class _UpdateDepartmentViewState extends State<UpdateDepartmentView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const CustomBackButton(
-        ),
-        title:const  Text(AppStrings.titleForUpdateDepartment),
+        leading: const CustomBackButton(),
+        title: const Text(AppStrings.titleForUpdateDepartment),
       ),
       body: UpdateDepartmentViewBody(
         departmentId: widget.departmentId,

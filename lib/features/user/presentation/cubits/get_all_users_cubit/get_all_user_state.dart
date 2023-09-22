@@ -2,7 +2,7 @@ import 'package:tasks_app/features/user/data/models/users_model/users_model.dart
 
 abstract class GetAllUsersState {}
 
-class GetAllUserInitialState extends GetAllUsersState {}
+class GetAllUsersInitialState extends GetAllUsersState {}
 
 class GetAllUsersLoadingState extends GetAllUsersState {}
 

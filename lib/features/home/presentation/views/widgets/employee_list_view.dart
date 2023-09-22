@@ -24,6 +24,3 @@ class EmployeesListView extends StatelessWidget {
     );
   }
 }
-
-
-

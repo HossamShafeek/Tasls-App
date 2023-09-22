@@ -6,7 +6,7 @@ import 'package:tasks_app/features/user/data/repository/user_repository.dart';
 import 'package:tasks_app/features/user/presentation/cubits/get_all_users_cubit/get_all_user_state.dart';
 
 class GetAllUsersCubit extends Cubit<GetAllUsersState> {
-  GetAllUsersCubit(this.userRepository) : super(GetAllUserInitialState());
+  GetAllUsersCubit(this.userRepository) : super(GetAllUsersInitialState());
   final UserRepository userRepository;
 
   static GetAllUsersCubit get(context) => BlocProvider.of(context);

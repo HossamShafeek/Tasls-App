@@ -6,11 +6,11 @@ import 'package:tasks_app/features/user/data/models/create_user_model/craete_use
 import 'package:tasks_app/features/user/data/repository/user_repository.dart';
 import 'package:tasks_app/features/user/presentation/cubits/create_user_cubit/create_user_state.dart';
 
-class UserCubit extends Cubit<UserState> {
-  UserCubit(this.userRepository) : super(UserInitialState());
+class CreateUserCubit extends Cubit<CreateUserState> {
+  CreateUserCubit(this.userRepository) : super(UserInitialState());
   final UserRepository userRepository;
 
-  static UserCubit get(context) => BlocProvider.of(context);
+  static CreateUserCubit get(context) => BlocProvider.of(context);
 
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -30,8 +30,7 @@ class UserCubit extends Cubit<UserState> {
       email: emailController.text,
       phone: phoneController.text,
       password: passwordController.text,
-      userType: groupValue,
-      // departmentId: 81
+      userType: groupValue.toString(), departmentId: 4.toString(),
     );
     result.fold((failure) {
       emit(CreateUserFailureState(failure.error));

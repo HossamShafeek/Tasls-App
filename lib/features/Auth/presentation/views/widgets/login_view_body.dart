@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:tasks_app/config/local/cache_helper.dart';
+import 'package:tasks_app/core/functions/show_snack_bar.dart';
 import 'package:tasks_app/core/utils/app_constants.dart';
 import 'package:tasks_app/core/utils/app_strings.dart';
 import 'package:tasks_app/core/widgets/gradient_button.dart';
@@ -11,6 +12,7 @@ import 'package:tasks_app/features/Auth/presentation/cubit/login_cubit/login_sta
 import 'package:tasks_app/features/Auth/presentation/views/widgets/keep_me_logged_in.dart';
 import 'package:tasks_app/features/Auth/presentation/views/widgets/login_texts_fields_section.dart';
 import 'package:tasks_app/features/home/presentation/views/animated_drawer_view.dart';
+import 'package:tasks_app/features/home/presentation/views/home_view_for_user.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({Key? key}) : super(key: key);
@@ -24,11 +26,24 @@ class LoginViewBody extends StatelessWidget {
             key: 'token',
             value: LoginCubit.get(context).loginModel!.data!.token!,
           );
-          Navigator.pushReplacement(context, MaterialPageRoute(
-            builder: (context) {
-              return const AnimatedDrawerView();
-            },
-          ));
+          if (state.loginModel.data!.userType == 'employee') {
+            Navigator.pushReplacement(context, MaterialPageRoute(
+              builder: (context) {
+                return const HomeViewForUser();
+              },
+            ));
+          } else {
+            Navigator.pushReplacement(context, MaterialPageRoute(
+              builder: (context) {
+                return const AnimatedDrawerView();
+              },
+            ));
+          }
+        }
+        if (state is LoginFailureState) {
+          showErrorSnackBar(context: context, message: state.error);
+        }else if(state is LoginSuccessState){
+          showSuccessSnackBar(context: context, message: state.loginModel.message!);
         }
       },
       builder: (context, state) {

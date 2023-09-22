@@ -3,21 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tasks_app/core/utils/app_constants.dart';
-import 'package:tasks_app/features/home/presentation/cubits/task_cubit/task_cubit.dart';
-import 'package:tasks_app/features/home/presentation/cubits/task_cubit/task_state.dart';
+import 'package:tasks_app/features/home/presentation/cubits/create_task_cubit/create_task_cubit.dart';
+import 'package:tasks_app/features/home/presentation/cubits/create_task_cubit/create_task_state.dart';
 
-class DatePickerRangeWidget extends StatefulWidget {
-  const DatePickerRangeWidget({Key? key}) : super(key: key);
-
-  @override
-  State<DatePickerRangeWidget> createState() => _DatePickerRangeWidgetState();
-}
-
-class _DatePickerRangeWidgetState extends State<DatePickerRangeWidget> {
-
+class DatePickerRangeForCreate extends StatelessWidget {
+   const DatePickerRangeForCreate({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TaskCubit, TaskState>(
+    return BlocBuilder<CreateTaskCubit, CreateTaskState>(
       builder: (context, state) {
         return Container(
           margin: EdgeInsets.only(bottom: AppConstants.defaultPadding),
@@ -42,8 +35,9 @@ class _DatePickerRangeWidgetState extends State<DatePickerRangeWidget> {
               currentDate: DateTime.now(),
               calendarType: CalendarDatePicker2Type.range,
             ),
-            value: TaskCubit.get(context).multiDatePickerValueWithDefaultValue,
-            onValueChanged: (dates) => TaskCubit.get(context)
+            value: CreateTaskCubit.get(context)
+                .multiDatePickerValueWithDefaultValue,
+            onValueChanged: (dates) => CreateTaskCubit.get(context)
                 .multiDatePickerValueWithDefaultValue = dates,
           ),
         );

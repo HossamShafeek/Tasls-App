@@ -26,7 +26,12 @@ class DepartmentRepositoryImplementation extends DepartmentRepository {
           });
       return Right(CreateDepartmentModel.fromJson(data.data));
     } catch (error) {
-      return Left(ServerFailure(error.toString()));
+      if (error is DioError) {
+        return Left(ServerFailure(
+            error.response!.data['message'].toString()));
+      } else {
+        return Left(ServerFailure(error.toString()));
+      }
     }
   }
 
@@ -39,7 +44,12 @@ class DepartmentRepositoryImplementation extends DepartmentRepository {
       );
       return Right(DepartmentsModel.fromJson(data));
     } catch (error) {
-      return Left(ServerFailure(error.toString()));
+      if (error is DioError) {
+        return Left(ServerFailure(
+            error.response!.data['message'].toString()));
+      } else {
+        return Left(ServerFailure(error.toString()));
+      }
     }
   }
 
@@ -61,26 +71,10 @@ class DepartmentRepositoryImplementation extends DepartmentRepository {
     } catch (error) {
       if (error is DioError) {
         return Left(ServerFailure(
-            error.response!.data['message']['user_status'].toString()));
+            error.response!.data['message'].toString()));
       } else {
         return Left(ServerFailure(error.toString()));
       }
     }
-  }
-
-  Future<CreateDepartmentModel> updateDepartment2({
-    required int departmentId,
-    required String name,
-    required int managerId,
-  }) async {
-    Response data = await apiServices.post(
-        token: CacheHelper.getString(key: 'token').toString(),
-        endPoint: EndPoints.updateDepartments + departmentId.toString(),
-        data: {
-          'manager_id': managerId.toString(),
-          'name': name,
-        });
-    print(data);
-    return CreateDepartmentModel.fromJson(data.data);
   }
 }

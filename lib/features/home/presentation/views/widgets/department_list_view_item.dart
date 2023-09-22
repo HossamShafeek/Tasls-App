@@ -21,7 +21,7 @@ class DepartmentListViewItem2 extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding:  EdgeInsets.symmetric(vertical:AppConstants.padding5h),
+          padding: EdgeInsets.symmetric(vertical: AppConstants.padding5h),
           child: Row(
             children: [
               Text(
@@ -29,7 +29,7 @@ class DepartmentListViewItem2 extends StatelessWidget {
                 style: AppStyles.textStyle16.copyWith(
                     color: Colors.indigo, fontWeight: FontWeight.bold),
               ),
-              const  Spacer(),
+              const Spacer(),
               CustomContainerButton(
                 onTap: () {
                   Navigator.push(
@@ -50,7 +50,9 @@ class DepartmentListViewItem2 extends StatelessWidget {
                 backgroundColor: AppColors.grey50,
                 iconSize: AppConstants.iconSize22,
               ),
-              SizedBox(width: AppConstants.padding15w,),
+              SizedBox(
+                width: AppConstants.padding15w,
+              ),
               CustomContainerButton(
                 onTap: () {
                   Navigator.push(

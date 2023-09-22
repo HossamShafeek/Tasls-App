@@ -8,6 +8,7 @@ class AppStrings {
   static const String login = 'LOGIN';
   static const String create = 'Create';
   static const String update = 'Update';
+  static const String employee = 'Employee';
   static const String titleForLogin = 'Welcome Back!';
   static const String titleForUsers = 'Users';
   static const String titleForDepartments = 'Departments';
@@ -16,6 +17,9 @@ class AppStrings {
   static const String titleForCreateTask = 'Create Task';
   static const String subtitleForCreateTask =
       'Create a new task now and assign it to employees right away.';
+  static const String titleForUpdateTask = 'Update Task';
+  static const String subtitleForUpdateTask =
+      'Update task now and assign it to employees right away.';
   static const String titleForCreateUser = 'Create User';
   static const String subtitleForCreateUser =
       'Create a new user now and assign them tasks right away.';

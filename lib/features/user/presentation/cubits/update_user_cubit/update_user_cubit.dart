@@ -29,7 +29,7 @@ class UpdateUserCubit extends Cubit<UpdateUserState> {
 
   Future<void> updateUser({
     required dynamic userId,
-    int? departmentId,
+    //required String departmentId,
   }) async {
     emit(UpdateUserLoadingState());
     Either<Failure, CreateUserModel> result;
@@ -41,7 +41,7 @@ class UpdateUserCubit extends Cubit<UpdateUserState> {
       password: passwordController.text,
       userType: groupValue.toString(),
       userStatus: 0.toString(),
-      //departmentId: 81
+      departmentId: 4.toString(),
     );
     result.fold((failure) {
       emit(UpdateUserFailureState(failure.error));

@@ -30,6 +30,7 @@ class AppConstants {
   static final double iconSize24 = 24.sp;
   static final double iconSize18 = 18.sp;
   static final double iconSize28 = 28.sp;
+  static final double iconSize33 = 33.sp;
   static final double iconSize22 = 22.sp;
   static final double circularSize22 = 22.sp;
 

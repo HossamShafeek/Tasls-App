@@ -5,16 +5,16 @@ import 'package:intl/intl.dart';
 import 'package:tasks_app/core/errors/failures.dart';
 import 'package:tasks_app/features/home/data/models/create_task_model/create_task_model.dart';
 import 'package:tasks_app/features/home/data/repository/home_repository.dart';
-import 'package:tasks_app/features/home/presentation/cubits/task_cubit/task_state.dart';
+import 'package:tasks_app/features/home/presentation/cubits/create_task_cubit/create_task_state.dart';
 
 final today = DateUtils.dateOnly(DateTime.now());
 
-class TaskCubit extends Cubit<TaskState> {
-  TaskCubit(this.homeRepository) : super(TaskInitialState());
+class CreateTaskCubit extends Cubit<CreateTaskState> {
+  CreateTaskCubit(this.homeRepository) : super(CreateTaskInitialState());
 
   final HomeRepository homeRepository;
 
-  static TaskCubit get(BuildContext context) => BlocProvider.of(context);
+  static CreateTaskCubit get(BuildContext context) => BlocProvider.of(context);
 
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
@@ -25,11 +25,6 @@ class TaskCubit extends Cubit<TaskState> {
   ];
 
   String? dropdownValue;
-
-  void changeDropdownValue({required dynamic value}) {
-    dropdownValue = value.id.toString();
-    emit(ChangeDropdownValueState());
-  }
 
   CreateTaskModel? createTaskModel;
 

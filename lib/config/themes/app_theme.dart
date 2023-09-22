@@ -12,12 +12,11 @@ ThemeData appTheme() {
     primaryColor: AppColors.deepPurple,
     //primarySwatch: MaterialColor(0xff673ab7, color),
     scaffoldBackgroundColor: AppColors.white,
-    appBarTheme:  AppBarTheme(
-      color: Colors.transparent,
-      elevation: 0,
-      systemOverlayStyle: AppConstants.systemUiOverlayStyle,
-      titleTextStyle: AppStyles.textStyle25,
-      centerTitle: true
-    ),
+    appBarTheme: AppBarTheme(
+        color: Colors.transparent,
+        elevation: 0,
+        systemOverlayStyle: AppConstants.systemUiOverlayStyle,
+        titleTextStyle: AppStyles.textStyle25,
+        centerTitle: true),
   );
 }
